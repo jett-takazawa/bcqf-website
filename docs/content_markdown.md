@@ -37,7 +37,7 @@ We're a small group of about 25 undergraduates with a flat structure, so every m
 - **Eugene Lim** — Business Analytics
 - **Jett Takazawa** — Business Analytics & Information Systems
 - **Rowan Goranson** — Computer Science & Economics, Finance minor
-- **Tyler Potsiadlo** — Math & Economics
+- **Tyler Potsiadlo** — Mathematics & Economics
 
 ---
 
