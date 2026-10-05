@@ -1,0 +1,17 @@
+---
+import site from '../content/site.json';
+
+interface Props {
+  variant?: 'primary' | 'gold';
+  class?: string;
+}
+
+const { variant = 'primary', class: className } = Astro.props;
+---
+
+<a
+  class:list={['btn', `btn--${variant}`, className]}
+  href={site.signUp.url}
+  target="_blank"
+  rel="noopener"
+>{site.signUp.label}</a>

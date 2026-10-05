@@ -1,0 +1,47 @@
+---
+import site from '../content/site.json';
+
+const { whatWeDo } = site;
+---
+
+<section class="section section--paper" id="what-we-do" aria-labelledby="what-we-do-title">
+  <div class="container">
+    <h2 class="h2" id="what-we-do-title">{whatWeDo.heading}</h2>
+    <ul class="pillars">
+      {whatWeDo.pillars.map((pillar) => (
+        <li class="pillar">
+          <h3 class="pillar__title">{pillar.title}</h3>
+          <p class="pillar__body">{pillar.body}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .pillars {
+    display: grid;
+    gap: 48px;
+    margin-top: 48px;
+  }
+
+  .pillar {
+    padding-top: 24px;
+    border-top: 2px solid var(--gold);
+  }
+  .pillar__title {
+    font-size: var(--text-lead);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--maroon);
+  }
+  .pillar__body {
+    max-width: 34ch;
+    margin-top: 12px;
+    color: var(--ink);
+  }
+
+  @media (min-width: 900px) {
+    .pillars { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

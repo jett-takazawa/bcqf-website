@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "title": "Boston College Quantitative Finance Club (BCQF)",
+    "description": "Building Boston College's presence in quantitative trading, research, and development.",
+    "shortName": "BCQF"
+  },
+  "signUp": {
+    "label": "Sign up",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSe86v5wbWzWDJyDzUKfWxiMOKA5R2cgXRijXmnvTyT5jkijOg/viewform",
+    "helper": "Opens a Google Form"
+  },
+  "nav": [
+    { "label": "About us", "href": "#about" },
+    { "label": "What we do", "href": "#what-we-do" },
+    { "label": "Members", "href": "#members" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "hero": {
+    "name": "Boston College Quantitative Finance Club",
+    "tagline": "Building Boston College's presence in quantitative trading, research, and development.",
+    "secondaryLink": { "label": "About us", "href": "#about" }
+  },
+  "about": {
+    "heading": "About us",
+    "paragraphs": [
+      "Founded in 2026, the Boston College Quantitative Finance Club is a group of BC students preparing for careers in quantitative trading, research, and development.",
+      "We're here to share what we know with each other and with the wider BC community, and to make Boston College a recognized name in quantitative finance."
+    ]
+  },
+  "whatWeDo": {
+    "heading": "What we do",
+    "pillars": [
+      {
+        "title": "Education",
+        "body": "Throughout the year, we run internal seminars on probability, market microstructure, quantitative strategies, and other core topics in quantitative finance. No prior trading experience is required."
+      },
+      {
+        "title": "Industry connections",
+        "body": "We're building relationships with leading firms in the industry to give members access to mentorship, networking, and firsthand insight into quant careers."
+      },
+      {
+        "title": "Community",
+        "body": "We're a small group of about 25 undergraduates with a flat structure, so every member plays a real part in shaping the club. We're planning social events throughout the year, including coffee chats, dinners, and retreats."
+      }
+    ]
+  },
+  "members": {
+    "heading": "Current members",
+    "list": [
+      { "name": "Austin Orsini Chan", "major": "Computer Science" },
+      { "name": "Justin Cho", "major": "Physics & Mathematics" },
+      { "name": "Joning Wang", "major": "Mathematics & Economics" },
+      { "name": "Jao van Schalkwyk", "major": "Computer Science" },
+      { "name": "Eugene Lim", "major": "Business Analytics" },
+      { "name": "Jett Takazawa", "major": "Business Analytics & Information Systems" },
+      { "name": "Rowan Goranson", "major": "Computer Science & Economics, Finance minor" }
+    ]
+  },
+  "signUpSection": {
+    "heading": "Sign up",
+    "pitch": "Interested in quantitative finance? Fill out our interest form to get involved."
+  },
+  "contact": {
+    "heading": "Contact us",
+    "email": "bcquantitativefinance@gmail.com",
+    "phone": { "display": "(415) 960-4567", "tel": "+14159604567" }
+  },
+  "footer": {
+    "copyright": "© 2026 Boston College Quantitative Finance Club"
+  },
+  "logoAlt": "BCQF logo",
+  "skipLink": "Skip to content"
+}

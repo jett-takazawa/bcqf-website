@@ -1,0 +1,105 @@
+---
+import site from '../content/site.json';
+import SignUpButton from './SignUpButton.astro';
+
+const { hero } = site;
+---
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="container hero__inner">
+    <img
+      class="hero__logo"
+      src="/logos/bcqf-white.png"
+      alt={site.logoAlt}
+      width="1065"
+      height="355"
+      fetchpriority="high"
+    />
+    <div class="hero__name">
+      <span class="rule hero__rule hero__rule--left" aria-hidden="true"></span>
+      <h1 id="hero-title">{hero.name}</h1>
+      <span class="rule hero__rule hero__rule--right" aria-hidden="true"></span>
+    </div>
+    <p class="hero__tagline">{hero.tagline}</p>
+    <div class="hero__actions">
+      <SignUpButton />
+      <a class="link hero__link" href={hero.secondaryLink.href}>{hero.secondaryLink.label}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding-block: var(--hero-pad); }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero__logo { width: 240px; }
+
+  .hero__name {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 880px;
+    margin-top: 24px;
+  }
+  .hero__name h1 {
+    flex: 0 1 auto;
+    font-size: var(--text-name);
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--maroon);
+    /* letter-spacing adds trailing space after the last letter; balance it */
+    margin-right: -0.18em;
+    text-wrap: balance;
+  }
+  .hero__rule { flex: 1 1 24px; min-width: 24px; }
+  .hero__rule--left { transform-origin: right center; }
+  .hero__rule--right { transform-origin: left center; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__rule { animation: rule-draw 600ms ease-out 200ms both; }
+  }
+  @keyframes rule-draw {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .hero__tagline {
+    max-width: 36ch;
+    margin-top: 32px;
+    font-size: var(--text-lead);
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px 32px;
+    margin-top: 40px;
+  }
+  .hero__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    font-family: var(--font-sans);
+    font-size: var(--text-ui);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  @media (min-width: 768px) {
+    .hero__logo { width: 360px; }
+    .hero__name { gap: 24px; margin-top: 32px; }
+  }
+</style>

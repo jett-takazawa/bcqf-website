@@ -1,0 +1,49 @@
+---
+import site from '../content/site.json';
+
+const { about } = site;
+---
+
+<section class="about section" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about__column">
+      <div class="about__heading">
+        <h2 id="about-title">{about.heading}</h2>
+        <span class="rule about__rule" aria-hidden="true"></span>
+      </div>
+      {about.paragraphs.map((p) => <p class="about__statement">{p}</p>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--maroon);
+    color: var(--paper);
+  }
+
+  .about__column { max-width: 30em; font-size: var(--text-statement); }
+
+  .about__heading {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
+    font-size: var(--text-base);
+  }
+  .about__heading h2 {
+    flex: none;
+    font-size: var(--text-lead);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--gold-light);
+  }
+  .about__rule { flex: 1; background: var(--gold-light); }
+
+  .about__statement {
+    font-size: var(--text-statement);
+    line-height: 1.4;
+    color: var(--paper);
+  }
+  .about__statement + .about__statement { margin-top: 0.75em; }
+</style>

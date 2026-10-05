@@ -1,0 +1,83 @@
+---
+import site from '../content/site.json';
+import SignUpButton from './SignUpButton.astro';
+---
+
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    <a class="site-header__logo" href="#top">
+      <img src="/logos/bcqf-white.png" alt={site.logoAlt} width="1065" height="355" />
+    </a>
+    <nav class="site-header__nav" aria-label="Sections">
+      <ul>
+        {site.nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <SignUpButton class="site-header__cta" />
+  </div>
+</header>
+
+<script>
+  // Add the 1px border once the page has scrolled.
+  const header = document.querySelector('[data-header]');
+  if (header) {
+    const update = () => header.classList.toggle('is-scrolled', window.scrollY > 0);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid transparent;
+  }
+  .site-header:global(.is-scrolled) { border-bottom-color: var(--line); }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: var(--header-h);
+  }
+
+  .site-header__logo {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    margin-right: auto;
+    border-radius: var(--radius);
+  }
+  .site-header__logo:focus-visible { outline: 3px solid var(--maroon); outline-offset: 3px; }
+  /* The cropped PNG carries 24px of padding (355px tall, 307px of mark), so 37px keeps the mark 32px tall. */
+  .site-header__logo img { height: 37px; width: auto; }
+
+  .site-header__nav { display: none; }
+  .site-header__nav ul { display: flex; gap: 28px; }
+  .site-header__nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: var(--font-sans);
+    font-size: var(--text-ui);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--ink);
+    text-decoration: none;
+    text-underline-offset: 3px;
+  }
+  .site-header__nav a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+  .site-header__nav a:focus-visible { outline: 3px solid var(--maroon); outline-offset: 3px; border-radius: 1px; }
+
+  .site-header__inner :global(.site-header__cta) { min-height: 44px; }
+
+  @media (min-width: 768px) {
+    .site-header__nav { display: block; }
+    .site-header__inner :global(.site-header__cta) { min-height: 40px; }
+  }
+</style>

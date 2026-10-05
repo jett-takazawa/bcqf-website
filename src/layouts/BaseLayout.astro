@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+import site from '../content/site.json';
+
+const canonical = new URL('/', Astro.site).href;
+const ogImage = new URL('/og-image.png', Astro.site).href;
+
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.hero.name,
+  alternateName: site.meta.shortName,
+  url: canonical,
+  email: site.contact.email,
+  telephone: site.contact.phone.tel,
+  logo: new URL('/logos/bcqf-full.png', Astro.site).href,
+  description: site.meta.description,
+  potentialAction: {
+    '@type': 'JoinAction',
+    name: site.signUp.label,
+    target: site.signUp.url,
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.meta.title}</title>
+    <meta name="description" content={site.meta.description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#FEFCFA" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.hero.name} />
+    <meta property="og:title" content={site.meta.title} />
+    <meta property="og:description" content={site.meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={site.logoAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="/logos/bcqf-white.png" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{site.skipLink}</a>
+    <slot />
+  </body>
+</html>

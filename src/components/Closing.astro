@@ -1,0 +1,108 @@
+---
+import site from '../content/site.json';
+import SignUpButton from './SignUpButton.astro';
+
+const { signUpSection, signUp, contact, footer } = site;
+---
+
+<div class="closing">
+  <section class="closing__signup" id="sign-up" aria-labelledby="sign-up-title">
+    <div class="container closing__signup-inner">
+      <div>
+        <h2 class="h2 closing__h2" id="sign-up-title">{signUpSection.heading}</h2>
+        <p class="closing__pitch">{signUpSection.pitch}</p>
+      </div>
+      <div class="closing__action">
+        <SignUpButton variant="gold" />
+        <p class="closing__helper">{signUp.helper}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing__contact" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <h2 class="h2 closing__h2" id="contact-title">{contact.heading}</h2>
+      <ul class="closing__contact-list">
+        <li><a class="link link--dark" href={`mailto:${contact.email}`}>{contact.email}</a></li>
+        <li><a class="link link--dark" href={`tel:${contact.phone.tel}`}>{contact.phone.display}</a></li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <img src="/logos/bcqf-black.png" alt={site.logoAlt} width="1063" height="354" loading="lazy" />
+    <p>{footer.copyright}</p>
+  </div>
+</footer>
+
+<style>
+  .closing,
+  .site-footer {
+    background: var(--night);
+    color: var(--paper);
+  }
+
+  .closing__signup { padding-top: var(--section-pad); }
+  .closing__contact { padding-block: var(--section-pad); }
+
+  .closing__h2 { color: var(--paper); }
+
+  .closing__signup-inner {
+    display: grid;
+    gap: 32px;
+  }
+  .closing__pitch {
+    max-width: 40ch;
+    margin-top: 16px;
+    color: var(--paper);
+  }
+
+  .closing__action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .closing__helper {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--stone-light);
+  }
+
+  .closing__contact-list { margin-top: 16px; }
+  .closing__contact-list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer { padding-bottom: 48px; }
+  .site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: 32px;
+  }
+  .site-footer img { width: 140px; }
+  .site-footer p {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--stone-light);
+  }
+
+  @media (min-width: 768px) {
+    .closing__signup-inner {
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      column-gap: 64px;
+    }
+    .closing__action { align-items: center; }
+  }
+</style>

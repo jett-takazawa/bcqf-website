@@ -1,0 +1,60 @@
+---
+import site from '../content/site.json';
+
+interface Member {
+  name: string;
+  major: string;
+  linkedin?: string;
+}
+
+const { members } = site;
+const list: Member[] = members.list;
+---
+
+<section class="section section--paper" id="members" aria-labelledby="members-title">
+  <div class="container">
+    <h2 class="h2" id="members-title">{members.heading}</h2>
+    <ul class="members">
+      {list.map((m) => (
+        <li class="member">
+          <p class="member__name">
+            {m.linkedin ? (
+              <a class="link member__link" href={m.linkedin} target="_blank" rel="noopener">{m.name}</a>
+            ) : (
+              m.name
+            )}
+          </p>
+          <p class="member__major">{m.major}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .members {
+    display: grid;
+    gap: 24px 48px;
+    margin-top: 48px;
+  }
+
+  .member__name {
+    font-size: var(--text-base);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .member__link { color: var(--ink); text-decoration-color: var(--maroon); }
+
+  .member__major {
+    margin-top: 2px;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--stone);
+  }
+
+  @media (min-width: 720px) {
+    .members { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 880px; }
+  }
+</style>
